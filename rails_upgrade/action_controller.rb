@@ -9,17 +9,4 @@ module ActionController
       super
     end
   end
-
-  class Base
-    module ExtendedDeprecation
-      def session=(value)
-        super
-        if secret = value[:secret]
-          Rails.application.config.secret_token = secret
-        end
-      end
-    end
-
-    extend ExtendedDeprecation
-  end
 end
