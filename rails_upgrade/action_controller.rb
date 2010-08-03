@@ -11,9 +11,6 @@ module ActionController
   end
 
   class Base
-    def self.exempt_from_layout(*)
-    end
-
     module ExtendedDeprecation
       def session=(value)
         super
