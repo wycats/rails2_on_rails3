@@ -9,22 +9,4 @@ module ActiveRecord
       end
     end
   end
-
-  class Base
-    def self.before_validation_on_create(name = nil, &block)
-      if name
-        before_validation name, :on => :create
-      else
-        before_validation({:on => :create}, &block)
-      end
-    end
-
-    def self.validate_on_create(name = nil, &block)
-      if name
-        validate name, :on => :create
-      else
-        validate({:on => :create}, &block)
-      end
-    end
-  end
 end
