@@ -1,6 +1,5 @@
 require "action_view"
 require "action_view/base"
-require "active_support/all"
 
 module ActiveSupport
   remove_const :SafeBuffer
@@ -13,12 +12,6 @@ end
 
 module ActionView
   class Base
-    alias old_initialize initialize
-    def initialize(*args)
-      old_initialize(*args)
-      @controller = @_controller
-    end
-
     # change the default behavior for tag and content_tag to not escape
     module DeactivateEscape
       def tag(name, options = nil, open = false, escape = false)
