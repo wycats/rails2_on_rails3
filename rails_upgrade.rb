@@ -56,6 +56,7 @@ require_bundler
 require "rails/all"
 require "active_support/all"
 require "rails_upgrade/action_view"
+require "rails_upgrade/action_controller"
 
 # This is needed because Rails 3 requires development.rb, while Rails 2.3
 # invoked it in a special scope
