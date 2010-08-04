@@ -11,6 +11,31 @@ end
 
 
 module ActionView
+  module Helpers
+    module ActiveRecordHelper
+      def self.included(klass)
+        klass.class_eval { include ActiveModelHelper }
+      end
+    end
+
+    module AssetTagHelper
+      def self.reset_javascript_include_default
+        self.javascript_expansions[:default] = ['prototype', 'effects', 'dragdrop', 'controls', 'rails']
+      end
+    end
+
+    module UrlHelper
+      def _routes
+        Rails.application.routes
+      end
+
+      # hack because Rails 3 UrlHelper requires #controller, while in Rails 2 it just required @controller
+      def controller
+        @controller
+      end
+    end
+  end
+
   class Base
     # change the default behavior for tag and content_tag to not escape
     module DeactivateEscape
